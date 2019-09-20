@@ -59,6 +59,15 @@ public class ImageRepository {
             return null;
         }
     }
+    
+    public Image getImageById(Integer imageId) {
+      try {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Image.class, imageId);
+      } catch(NoResultException nre) {
+        return null;
+      }
+    }
 
     //The method creates an instance of EntityManager
     //Executes JPQL query to fetch the image from the database with corresponding id
